@@ -4,6 +4,7 @@
     {
         /* Enum for messages */
         AddExp = 1,
-        SyncLevel
+        SyncLevel,
+        SyncStats
     }
 }

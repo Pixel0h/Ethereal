@@ -5,6 +5,9 @@
         /* Defines Mod Name */
         public const string ModName = "Ethereal";
 
+        /* Defines Maximum Screen Width Resolution */
+        public const float MaxScreenWidth = 3840f;
+
         /* Defines Experience Required Until Next Level */
         public static readonly long[] levelEXP = new long[]
         {

@@ -41,11 +41,32 @@ namespace Ethereal
             }
 
             ECharacter character = player.GetModPlayer<ECharacter>();
-            long baseExp = character.Level * npc.lifeMax;
-            long scaled = Main.expertMode ? baseExp * 2 : baseExp;
 
-            if (!AddEXPPacket.Write(scaled, npc.target))
-                character.AddExperience(scaled);
+            /* Base Character Experience w/out Modifiers */
+            long baseExp = character.Level * npc.lifeMax;
+
+            /* Experience Modifers w/ Boss Kills */
+            long kingSlime = NPC.downedSlimeKing ? (long)(baseExp * .25) : baseExp;
+            long eventGoblins = NPC.downedGoblins ? (long)(baseExp * .10) : baseExp;
+            long queenBee = NPC.downedQueenBee ? (long)(baseExp * .25) : baseExp;
+            long eventPirates = NPC.downedPirates ? (long)(baseExp * .10) : baseExp;
+            long mechBosses = NPC.downedMechBossAny ? (long)(baseExp * .50) : baseExp;
+            long plantera = NPC.downedPlantBoss ? (long)(baseExp * .25) : baseExp;
+            long golem = NPC.downedGolemBoss ? (long)(baseExp * .25) : baseExp;
+            long fishron = NPC.downedFishron ? (long)(baseExp * .25) : baseExp;
+            long eventMartians = NPC.downedMartians ? (long)(baseExp * .10) : baseExp;
+            long eventFrost = NPC.downedChristmasIceQueen ? (long)(baseExp * .05) : baseExp;
+            long eventPumpkin = NPC.downedHalloweenKing ? (long)(baseExp * .05) : baseExp;
+            long ancientCultist = NPC.downedAncientCultist ? (long)(baseExp * .10) : baseExp;
+            long allTowers = NPC.downedTowers ? (long)(baseExp * .25) : baseExp;
+            long moonLord = NPC.downedMoonlord ? (long)(baseExp * .50) : baseExp;
+
+            /* Experience Modifiers w/ Mode */
+            long expert = Main.expertMode ? (long)(baseExp * 2) : baseExp;
+            long hardmode = Main.hardMode ? (long)(baseExp * .50) : baseExp;
+
+            if (!AddEXPPacket.Write(baseExp, npc.target))
+                character.AddExperience(baseExp);
         }
     }
 }

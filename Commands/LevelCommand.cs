@@ -22,13 +22,16 @@ namespace Ethereal.Commands
                 character.Level = int.Parse(args[0]);
                 character.Experience = character.GetExperienceNeededForLevel(character.Level) * xp;
 
-                Main.NewText("Current Level: " + character.Level, 255, 223, 63);
-                Main.NewText("Current Experience: " + character.Experience, 255, 223, 63);
-                Main.NewText("Current Needed Experience: " + character.GetExperienceNeededForLevel(character.Level), 255, 223, 63);
+                Main.NewText("Level Increased To: " + character.Level, 43, 255, 128);
             }
             catch (Exception e)
             {
-                Main.NewText("Please use: " + Usage, 255, 223, 63);
+                ECharacter character = caller.Player.GetModPlayer<ECharacter>();
+
+                Main.NewText("Please use: " + Usage, 255, 43, 43);
+                Main.NewText("Your Current Level Is: " + character.Level, 255, 223, 63);
+                Main.NewText("Your Total Experience Is: " + character.TotalExperience, 255, 223, 63);
+                Main.NewText("Experience To Next Level: " + character.Experience, 255, 223, 63);
                 ModLoader.GetMod(EConstants.ModName).Logger.InfoFormat("@Command :: " + e);
             }
         }
