@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ethereal.Enums;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -21,6 +22,11 @@ namespace Ethereal.Commands
                 long xp = character.Experience / character.GetExperienceNeededForLevel(character.Level);
                 character.Level = int.Parse(args[0]);
                 character.Experience = character.GetExperienceNeededForLevel(character.Level) * xp;
+
+                foreach (PlayerStats stat in Enum.GetValues(typeof(PlayerStats)))
+                {
+                    character.BaseStats[stat] += 1;
+                }
 
                 Main.NewText("Level Increased To: " + character.Level, 43, 255, 128);
             }

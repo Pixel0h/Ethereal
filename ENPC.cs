@@ -50,7 +50,7 @@ namespace Ethereal
             long eventGoblins = NPC.downedGoblins ? (long)(baseExp * .10) : baseExp;
             long queenBee = NPC.downedQueenBee ? (long)(baseExp * .25) : baseExp;
             long eventPirates = NPC.downedPirates ? (long)(baseExp * .10) : baseExp;
-            long mechBosses = NPC.downedMechBossAny ? (long)(baseExp * .50) : baseExp;
+            long mechBosses = NPC.downedMechBossAny ? (long)(baseExp * .30) : baseExp;
             long plantera = NPC.downedPlantBoss ? (long)(baseExp * .25) : baseExp;
             long golem = NPC.downedGolemBoss ? (long)(baseExp * .25) : baseExp;
             long fishron = NPC.downedFishron ? (long)(baseExp * .25) : baseExp;
@@ -58,7 +58,7 @@ namespace Ethereal
             long eventFrost = NPC.downedChristmasIceQueen ? (long)(baseExp * .05) : baseExp;
             long eventPumpkin = NPC.downedHalloweenKing ? (long)(baseExp * .05) : baseExp;
             long ancientCultist = NPC.downedAncientCultist ? (long)(baseExp * .10) : baseExp;
-            long allTowers = NPC.downedTowers ? (long)(baseExp * .25) : baseExp;
+            long allTowers = NPC.downedTowers ? (long)(baseExp * .10) : baseExp;
             long moonLord = NPC.downedMoonlord ? (long)(baseExp * .50) : baseExp;
 
             /* Experience Modifiers w/ Mode */

@@ -5,7 +5,7 @@ using Terraria;
 
 namespace Ethereal.GUI
 {
-    /* Defines Methods and Variables for Ethereal GUI Interface Buttons */
+    /* Defines Methods and Variables for GUI Interface Buttons */
     public class InterfaceButton
     {
         private readonly Action<Player, SpriteBatch> hoverAction;

@@ -31,6 +31,11 @@ namespace Ethereal
         public void LevelUp()
         {
             Level += 1;
+            BaseStats[PlayerStats.STR] += 1;
+            BaseStats[PlayerStats.DEX] += 1;
+            BaseStats[PlayerStats.LUK] += 1;
+            BaseStats[PlayerStats.INT] += 1;
+
             SyncLevelPacket.Write(player.whoAmI, Level);
             Main.NewText("Congratulations! You are now level: " + Level, 43, 135, 255);
         }
@@ -79,7 +84,7 @@ namespace Ethereal
 
             foreach (PlayerStats stat in Enum.GetValues(typeof(PlayerStats)))
             {
-                BaseStats[stat] = 0;
+                BaseStats[stat] = 1;
             }
         }
 
@@ -98,16 +103,39 @@ namespace Ethereal
             InitializeGUI();
         }
 
+        /* Modifies Damage and Weapon Speed based on damage type */
         private void ModifyDamage(ref int damage, ref bool crit, NPC target, Item item = null, Projectile proj = null)
         {
-            float strDamage = 1f + BaseStats[PlayerStats.STR] * 0.04f;
-            damage = (int)(damage * strDamage);
+            if (item == null && proj == null)
+                return;
+
+            if (item == player.HeldItem)
+            {
+                if (item.melee)
+                    damage += BaseStats[PlayerStats.STR] * 1;
+                if (item.magic)
+                    damage += BaseStats[PlayerStats.INT] * 1;
+                if (item.ranged || item.thrown)
+                    damage += BaseStats[PlayerStats.DEX] * 1;
+                if (item.summon)
+                    damage += BaseStats[PlayerStats.LUK] * 1;
+
+                item.shootSpeed += BaseStats[PlayerStats.DEX] / 275 * 100;
+            }
+            else
+                return;
         }
 
-        /* Modifies damage done to npcs */
+        /* Modifies what happens when you hit an NPC */
         public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockBack, ref bool crit)
         {
             ModifyDamage(ref damage, ref crit, target, item);
+        }
+
+        /* Modifies what happens when you hit an NPC with a projectile */
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockBack, ref bool crit, ref int hitDirection)
+        {
+            ModifyDamage(ref damage, ref crit, target, null, proj);
         }
 
         /* Handles Player Connecting */

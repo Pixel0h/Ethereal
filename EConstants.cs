@@ -1,4 +1,7 @@
-﻿namespace Ethereal
+﻿using Terraria;
+using Terraria.ModLoader;
+
+namespace Ethereal
 {
     public class EConstants
     {
