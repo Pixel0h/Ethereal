@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Ethereal.Enums;
 using System.IO;
-using Ethereal.Enums;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;

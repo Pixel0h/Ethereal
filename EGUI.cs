@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Ethereal.GUI;
+﻿using Ethereal.GUI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
+using System.Collections.Generic;
 using Terraria;
 
 namespace Ethereal

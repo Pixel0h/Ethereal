@@ -1,6 +1,6 @@
-﻿using System;
-using Ethereal.Enums;
+﻿using Ethereal.Enums;
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.Audio;
 

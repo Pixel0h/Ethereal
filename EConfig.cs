@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
-using Newtonsoft.Json;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -136,7 +136,7 @@ namespace Ethereal
 
         public class ConfigStats
         {
-            public string LastStartVersion { get; set; } = "0.0.3";
+            public string LastStartVersion { get; set; } = "0.0.5";
         }
     }
 }
